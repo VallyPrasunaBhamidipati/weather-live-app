@@ -41,6 +41,7 @@ export default class Main extends Component {
     const { data, location } = this.state;
     return (
     <div className={"root"}>
+        Hello
         <input
         type="text"
         value={location}
