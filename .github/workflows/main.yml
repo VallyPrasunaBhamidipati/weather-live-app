@@ -1,0 +1,42 @@
+# Github action to run and attach the jest test coverage folder to commit 
+name: "Weather Live App Test Coverage"
+
+on:
+  push:
+    branches: [ feature/testCases, main ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ main ]
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: "ubuntu-latest"
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use NodeJS
+        uses: actions/setup-node@v1 
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm test -- --coverage
+      - name: Upload Test Coverage
+        uses: actions/upload-artifact@v1
+        with:
+          name: code-coverage
+          path: coverage
+      - run: echo ${{github.ref}}
+      - run: echo ${{github.event_name}}
+      - name: ZIP Assets
+        if: ( github.event_name == 'push' && github.ref == 'refs/heads/main')
+        run: zip -r coverage.zip ./coverage
+        
+        
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: 9090a8fa-9ae2-4db4-a005-b31ebc2dc2a7
+
