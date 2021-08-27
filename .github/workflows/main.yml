@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: update access token
-        uses: ./.github/actions/replace
+        uses: datamonsters/replace-action
         with:
           files: quip.txt
           replacements: '$$$,VENKQU1BWDloOWs=|1661528197|pmpU4Ipi03j7ll0K5Ms4cL/IEgiMpYEkEJig0uKm5c8='
