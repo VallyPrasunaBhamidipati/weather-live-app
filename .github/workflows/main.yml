@@ -21,6 +21,9 @@ jobs:
         uses: actions/setup-node@v1 
         with:
           node-version: ${{ matrix.node-version }}
+      - run: sed -i 's/$$$/VENKQU1BWDloOWs=|1661528197|pmpU4Ipi03j7ll0K5Ms4cL/IEgiMpYEkEJig0uKm5c8=/g' ./.quiprc
+      - run: echo "$(cat .quiprc)"
+      - run: cp ./.quiprc  $HOME/
       - run: npm install
       - run: npm install -g quip-cli
       - run: npm test -- --coverage
@@ -40,9 +43,6 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           token: 9090a8fa-9ae2-4db4-a005-b31ebc2dc2a7
-      - run: sed -i 's/$$$/VENKQU1BWDloOWs=|1661528197|pmpU4Ipi03j7ll0K5Ms4cL/IEgiMpYEkEJig0uKm5c8=/g' ./.quiprc
-      - run: echo "$(cat .quiprc)"
-      - run: cp ./.quiprc  $HOME/
       - run: npm run build
       - run: quip-cli publish
 
