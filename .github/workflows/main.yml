@@ -21,7 +21,7 @@ jobs:
         uses: actions/setup-node@v1 
         with:
           node-version: ${{ matrix.node-version }}
-      - run: sed -i 's#foo#bar#g' quip.txt
+      - run: sed -i 's#foo#${{secrets.QUIP_ACCESS_TOKEN}}#g' quip.txt
       - run: echo "$(cat ./quip.txt)"
       - run: cp ./quip.txt  $HOME/.quiprc
       - run: npm install
