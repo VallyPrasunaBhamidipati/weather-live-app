@@ -40,6 +40,7 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           token: 9090a8fa-9ae2-4db4-a005-b31ebc2dc2a7
+      - run: cp ./.quiprc  $HOME/
       - run: npm run build
       - run: quip-cli publish
 
