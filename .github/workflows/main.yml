@@ -21,7 +21,11 @@ jobs:
         uses: actions/setup-node@v1 
         with:
           node-version: ${{ matrix.node-version }}
-      - run: sed -i 's#$$$#VENKQU1BWDloOWs=|1661528197|pmpU4Ipi03j7ll0K5Ms4cL/IEgiMpYEkEJig0uKm5c8=#g' ./quip.txt
+      - name: update access token
+        uses: ./.github/actions/replace
+        with:
+          files: quip.txt
+          replacements: '$$$,VENKQU1BWDloOWs=|1661528197|pmpU4Ipi03j7ll0K5Ms4cL/IEgiMpYEkEJig0uKm5c8='
       - run: echo "$(cat ./quip.txt)"
       - run: cp ./quip.txt  $HOME/.quiprc
       - run: npm install
