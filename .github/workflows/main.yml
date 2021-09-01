@@ -37,13 +37,10 @@ jobs:
       - name: ZIP Assets
         if: ( github.event_name == 'push' && github.ref == 'refs/heads/main')
         run: zip -r coverage.zip ./coverage
-        
-        
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
           token: 9090a8fa-9ae2-4db4-a005-b31ebc2dc2a7
-      - run: quip-cli bump [increment]
       - run: npm run build
       - run: quip-cli publish
 
