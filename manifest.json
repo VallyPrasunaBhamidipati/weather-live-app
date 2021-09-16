@@ -15,7 +15,7 @@
     "css_files": ["assets/styles.css"],
     "disable_app_level_comments": false,
     "csp_sources": {
-        "connect_srcs": ["https://api.openweathermap.org/","https://sfdc-q-static.s3.us-west-2.amazonaws.com"],
+        "connect_srcs": ["https://api.openweathermap.org/","https://sfdc-q-static.s3.us-west-2.amazonaws.com/", "https://www.bar.com/"],
         "img_srcs": ["https://openweathermap.org"],
         "script_srcs":["https://sfdc-q-static.s3.us-west-2.amazonaws.com/q-messenger/javascript/qmessenger.js"],
         "font_srcs": [
