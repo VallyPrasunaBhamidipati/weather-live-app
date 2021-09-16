@@ -33,6 +33,7 @@
     "dependencies": {
         "quip-apps-api": "next",
         "quiptext": "next",
+        "react-helmet": "^6.1.0",
         "weather-view": "^0.2.1"
     },
     "typescript": false,

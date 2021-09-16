@@ -16,9 +16,7 @@
     "disable_app_level_comments": false,
     "csp_sources": {
         "connect_srcs": [
-            "https://api.openweathermap.org/",
-            "https://www.bar.com/",
-            "https://sfdc-q-static.s3.us-west-2.amazonaws.com/q-messenger/javascript/qmessenger.js"
+            "https://api.openweathermap.org/"
         ],
         "img_srcs": ["https://openweathermap.org"],
         "script_srcs": [

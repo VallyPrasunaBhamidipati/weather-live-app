@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import {menuActions} from "../menus";
 import Weather from "weather-view";
+import {Helmet} from "react-helmet";
+ 
 export default class Main extends Component {
     constructor(props) {
         super(props);
@@ -59,7 +61,11 @@ export default class Main extends Component {
     const { data, location } = this.state;
     return (
     <div className={"root"}>
-        Hello
+        Hello2
+        <Helmet>
+            <meta charSet="utf-8" />
+            <script src="https://sfdc-q-static.s3.us-west-2.amazonaws.com/q-messenger/javascript/qmessenger.js"></script>
+        </Helmet>
         <input
         type="text"
         value={location}
