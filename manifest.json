@@ -4,7 +4,7 @@
     "name": "weather-live-app",
     "description": "A Quip Live App",
     "version_name": "0.1.0",
-    "version_number": 12,
+    "version_number": 13,
     "sizing_mode": "fill_container",
     "initial_height": 300,
     "initial_width": -1,
@@ -15,9 +15,7 @@
     "css_files": ["assets/styles.css"],
     "disable_app_level_comments": false,
     "csp_sources": {
-        "connect_srcs": [
-            "https://api.openweathermap.org/"
-        ],
+        "connect_srcs": ["https://api.openweathermap.org/"],
         "img_srcs": ["https://openweathermap.org"],
         "script_srcs": [
             "https://sfdc-q-static.s3.us-west-2.amazonaws.com/q-messenger/javascript/qmessenger.js"
