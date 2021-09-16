@@ -11,7 +11,6 @@ export default class Main extends Component {
          * This component will render based on the values of `this.state.data`.
          * This function will set `this.state.data` using the RootEntity's AppData.
          */
-        this.handleLoad = this.handleLoad.bind(this);
         this.refreshData_ = () => {
             const {rootRecord, menu} = this.props;
             const data = rootRecord.getData();
@@ -23,6 +22,9 @@ export default class Main extends Component {
         this.setupMenuActions_(rootRecord);
         const data = rootRecord.getData();
         this.state = {data, location: "New York"};
+        console.log("HAndle Load1")
+        this.handleLoad = this.handleLoad.bind(this);
+        console.log("HAndle Load2")
     }
     setupMenuActions_(rootRecord) {
         menuActions.toggleHighlight = () =>
@@ -37,6 +39,7 @@ export default class Main extends Component {
         this.refreshData_();
         console.log("*&&&&*", window)
         window.addEventListener('load', this.handleLoad);
+        console.log("*&&&&*2", window)
     }
     handleLoad() {
         console.log("**************")
@@ -69,7 +72,7 @@ export default class Main extends Component {
     const { data, location } = this.state;
     return (
     <div className={"root"}>
-        Hello2
+        Hello5
         <Helmet>
             <meta charSet="utf-8" />
             <script src="https://sfdc-q-static.s3.us-west-2.amazonaws.com/q-messenger/javascript/qmessenger.js"></script>
