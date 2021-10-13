@@ -11,7 +11,7 @@
     "toolbar_color": "red",
     "toolbar_icon": "assets/icons/toolbar.svg",
     "thumbnail": "assets/icons/thumbnail.svg",
-    "js_files": ["dist/app.js"],
+    "js_files": ["assets/qmessenger.js", "dist/app.js"],
     "css_files": ["assets/styles.css"],
     "disable_app_level_comments": false,
     "csp_sources": {
