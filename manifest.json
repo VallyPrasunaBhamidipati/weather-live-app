@@ -4,7 +4,7 @@
     "name": "weather-live-app",
     "description": "A Quip Live App",
     "version_name": "0.1.0",
-    "version_number": 27,
+    "version_number": 28,
     "sizing_mode": "fill_container",
     "initial_height": 300,
     "initial_width": -1,
@@ -15,16 +15,21 @@
     "css_files": ["assets/styles.css"],
     "disable_app_level_comments": false,
     "csp_sources": {
-        "connect_srcs": ["https://api.openweathermap.org/","https://api.mixpanel.com/",
+        "connect_srcs": [
+            "https://api.openweathermap.org/",
+            "https://api.mixpanel.com/",
             "https://api-js.mixpanel.com/",
             "https://api.publicapis.org/",
             "https://sfdc-q-static.s3-us-west-2.amazonaws.com/",
             "https://q-messenger-staging.qlabs.sfdc.sh/"
         ],
-        "script_srcs":[
+        "script_srcs": [
             "https://sfdc-q-static.s3.us-west-2.amazonaws.com/q-messenger/javascript/qmessenger.js"
         ],
-        "img_srcs": ["https://openweathermap.org","https://sfdc-q-static.s3-us-west-2.amazonaws.com/q-messenger/slds/assets/icons/utility-sprite/svg/symbols.svg"],
+        "img_srcs": [
+            "https://openweathermap.org",
+            "https://sfdc-q-static.s3-us-west-2.amazonaws.com/q-messenger/slds/assets/icons/utility-sprite/svg/symbols.svg"
+        ],
         "font_srcs": [
             "https://sfdc-q-static.s3-us-west-2.amazonaws.com/q-messenger/slds/assets/styles/salesforce-lightning-design-system-vf.css"
         ]
