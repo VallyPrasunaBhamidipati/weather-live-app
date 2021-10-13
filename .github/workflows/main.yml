@@ -39,13 +39,18 @@ jobs:
           token: 9090a8fa-9ae2-4db4-a005-b31ebc2dc2a7
       - name: Update Consts
         if: ( github.ref == 'refs/heads/main')
-        run: sed -i 's#QUUID#${{secrets.Q_MESSENGER_APP_UUID}}#g' ./src/model/consts.js || sed -i 's#QSECRET#${{secrets.Q_MESSENGER_SECRET_KEY}}#g' ./src/model/consts.js || echo "$(cat ./src/model/consts.js)"
+        run: sed -i 's#QUUID#${{secrets.Q_MESSENGER_APP_UUID}}#g' ./src/model/consts.js ; sed -i 's#QSECRET#${{secrets.Q_MESSENGER_SECRET_KEY}}#g' ./src/model/consts.js 
+      - run: echo "$(cat ./src/model/consts.js)"
       - name: Create Quiprc
         if: ( github.ref == 'refs/heads/main')
-        run: sed -i 's#foo#${{secrets.QUIP_ACCESS_TOKEN}}#g' quip.txt || cp ./quip.txt  $HOME/.quiprc
+        run: sed -i 's#foo#${{secrets.QUIP_ACCESS_TOKEN}}#g' quip.txt
+      - run: echo "$(cat ./quip.txt)"
+      - name: Copy Quiprc
+        if: ( github.ref == 'refs/heads/main')
+        run: cp ./quip.txt  $HOME/.quiprc
       - name: Build
         if: ( github.ref == 'refs/heads/main')
-        run: npm install -g quip-cli && npm run build 
+        run: npm install -g quip-cli && npm run build
       - name: Publish
         run: quip-cli publish
 
