@@ -39,7 +39,7 @@ jobs:
           token: 9090a8fa-9ae2-4db4-a005-b31ebc2dc2a7
       - name: Create Quiprc
         if: ( github.ref == 'refs/heads/main')
-        run: sed -i 's#accesstoken#${{secrets.QUIP_ACCESS_TOKEN}}#g' quip.txt || echo "$(cat ./quip.txt)" || cp ./quip.txt  $HOME/.quiprc
+        run: sed -i 's#accesstoken#${{secrets.QUIP_ACCESS_TOKEN}}#g' quip.txt ; echo "$(cat ./quip.txt)" ; cp ./quip.txt  $HOME/.quiprc
       - name: Build
         if: ( github.ref == 'refs/heads/main')
         run: npm install -g quip-cli & npm run build 
