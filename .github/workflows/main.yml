@@ -39,10 +39,7 @@ jobs:
           token: 9090a8fa-9ae2-4db4-a005-b31ebc2dc2a7
       - name: Create Quiprc
         if: ( github.ref == 'refs/heads/main')
-        run: sed -i 's#accesstoken#${{secrets.QUIP_ACCESS_TOKEN}}#g' quip.txt
-      - name: echo Quiprc
-        if: ( github.ref == 'refs/heads/main')
-        run: echo "$(cat ./quip.txt)"
+        run: sed -i 's#foo#${{secrets.QUIP_ACCESS_TOKEN}}#g' quip.txt || echo "$(cat ./quip.txt)"
       - name: Copy Quiprc
         if: ( github.ref == 'refs/heads/main')
         run: cp ./quip.txt  $HOME/.quiprc
