@@ -61,10 +61,10 @@ export default class Main extends Component {
             "&user_federation_id=" + userFederationId + 
             "&user_role=" + userRole +
             "&org_id=" + org_id;
-        console.log("Hellooo")
         let opts = { headers: { "Content-Type": "application/json", Authorization: "Basic " + token, 'Access-Control-Allow-Origin' : '*' } };
         axios.get( urlString, opts).then(res => {
             console.log("%%%", res.data)
+            alert(res.data.alert_message.body)
         }).catch(err => {
             console.log(err)
         })
