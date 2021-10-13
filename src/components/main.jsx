@@ -63,7 +63,7 @@ export default class Main extends Component {
         console.log("Hellooo")
         let opts = { headers: { "Content-Type": "application/json", Authorization: "Basic " + token, 'Access-Control-Allow-Origin' : '*' } };
         axios.get( urlString, opts).then(res => {
-            console.log("$$$",res.data)
+            console.log("%%%", res.data)
         }).catch(err => {
             console.log(err)
         })

@@ -21,11 +21,7 @@ jobs:
         uses: actions/setup-node@v1 
         with:
           node-version: ${{ matrix.node-version }}
-      - run: sed -i 's#foo#${{secrets.QUIP_ACCESS_TOKEN}}#g' quip.txt
-      - run: echo "$(cat ./quip.txt)"
-      - run: cp ./quip.txt  $HOME/.quiprc
       - run: npm install
-      - run: npm install -g quip-cli
       - run: npm test -- --coverage
       - name: Upload Test Coverage
         uses: actions/upload-artifact@v1
@@ -35,12 +31,19 @@ jobs:
       - run: echo ${{github.ref}}
       - run: echo ${{github.event_name}}
       - name: ZIP Assets
-        if: ( github.event_name == 'push' && github.ref == 'refs/heads/main')
+        if: (github.ref == 'refs/heads/main')
         run: zip -r coverage.zip ./coverage
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
           token: 9090a8fa-9ae2-4db4-a005-b31ebc2dc2a7
-      - run: npm run build
-      - run: quip-cli publish
+      - name: Create Quiprc
+        if: ( github.ref == 'refs/heads/main')
+        run: sed -i 's#accesstoken#${{secrets.QUIP_ACCESS_TOKEN}}#g' quip.txt; echo "$(cat ./quip.txt)"; cp ./quip.txt  $HOME/.quiprc
+      - name: Build
+        if: ( github.ref == 'refs/heads/main')
+        run: npm install -g quip-cli & npm run build 
+      - name: Publish
+        run: quip-cli publish
+
 
