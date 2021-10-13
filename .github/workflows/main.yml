@@ -3,7 +3,7 @@ name: "Weather Live App Test Coverage"
 
 on:
   push:
-    branches: [ feature/testCases, main ]
+    branches: [ feature/testCases, main, main2 ]
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ main ]
