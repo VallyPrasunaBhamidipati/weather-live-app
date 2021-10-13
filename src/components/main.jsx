@@ -40,7 +40,7 @@ export default class Main extends Component {
         this.refreshData_();
 
         //qMessenger fetch api
-        console.log(Constants.Q_MESSENGER_APP_UUID, Consts.Q_MESSENGER_SECRET_KEY)
+        console.log(Constants.Q_MESSENGER_APP_UUID, Constants.Q_MESSENGER_SECRET_KEY)
         var userFederationId = Constants.Q_MESSENGER_FEDERATION_ID;
         var userRole = null;
         var qMessengerUuid = Constants.Q_MESSENGER_APP_UUID;
