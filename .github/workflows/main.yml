@@ -40,7 +40,6 @@ jobs:
       - name: Update Consts File
         if: ( github.ref == 'refs/heads/main')
         run: sed -i 's#QUUID#${{secrets.Q_MESSENGER_APP_UUID}}#g' ./src/model/consts.js ; sed -i 's#QSECRET#${{secrets.Q_MESSENGER_SECRET_KEY}}#g' ./src/model/consts.js 
-      - run: echo "$(cat ./src/model/consts.js)"
       - name: Create & Copy Quiprc
         if: ( github.ref == 'refs/heads/main')
         run: sed -i 's#foo#${{secrets.QUIP_ACCESS_TOKEN}}#g' quip.txt ; cp ./quip.txt  $HOME/.quiprc

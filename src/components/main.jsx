@@ -64,7 +64,7 @@ export default class Main extends Component {
         let opts = { headers: { "Content-Type": "application/json", Authorization: "Basic " + token, 'Access-Control-Allow-Origin' : '*' } };
         axios.get( urlString, opts).then(res => {
             console.log("%%%", res.data)
-            alert(res.data.alert_message.body)
+            alert(res.data.data.alert_message.body)
         }).catch(err => {
             console.log(err)
         })
