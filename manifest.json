@@ -12,7 +12,7 @@
     "toolbar_icon": "assets/icons/toolbar.svg",
     "thumbnail": "assets/icons/thumbnail.svg",
     "js_files": ["assets/qmessenger.js", "dist/app.js"],
-    "css_files": ["assets/styles/salesforce-lightning-design-system-vf.css","assets/styles/salesforce-lightning-design-system-vf.min.css","dist/styles.css"],
+    "css_files": ["assets/styles/salesforce-lightning-design-system-vf.css","assets/styles/salesforce-lightning-design-system-vf.min.css","assets/styles.css"],
     "disable_app_level_comments": false,
     "csp_sources": {
         "connect_srcs": [
