@@ -54,7 +54,7 @@ export default class Main extends Component {
             qMessengerSecretKey, { algorithm: qMessengerAlgorithm }
         );
 
-        var urlString = Constants.REACT_APP_Q_MESSENGER_URL + 
+        var urlString = Constants.Q_MESSENGER_BASE_URL + Constants.Q_MESSENGER_FETCH_URL +
         "?app_uuid=" + qMessengerUuid + 
         "&user_federation_id=" + userFederationId + 
         "&user_role=" + userRole +
@@ -62,11 +62,10 @@ export default class Main extends Component {
 
     let opts = { headers: { "Content-Type": "application/json", Authorization: "Basic " + token } };
         axios.get( urlString, opts).then(res => {
-            console.log("&&&", res)
             window.qMessenger.init({
                 messages: res.data.data, // required
                 symbolsURL: 'https://sfdc-q-static.s3-us-west-2.amazonaws.com/q-messenger/slds/assets/icons/utility-sprite/svg/symbols.svg', // required     
-                voteURL: '/q_messenger_vote', // required
+                voteURL: Constants.Q_MESSENGER_BASE_URL + Constants.Q_MESSENGER_VOTE_URL, // required
             });
             window.qMessenger.displayMessages();
         }).catch(err => {

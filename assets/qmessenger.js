@@ -221,7 +221,8 @@ var qMessenger = (function () {
             
             var elemDiv = document.createElement("div");
             elemDiv.innerHTML = html;
-            document.body.appendChild(elemDiv);
+            document.getElementById("quip-element-root").prepend(elemDiv);
+            //document.body.appendChild(elemDiv);
 
             if (!message.persistent) {
                 document.getElementById("doNotShowAgain").checked = false;
@@ -466,7 +467,8 @@ var qMessenger = (function () {
                 minimizedElemDiv.className = 'slds-card q-messenger-fixed-card';
                 minimizedElemDiv.id = "minimized_card_message";
                 minimizedElemDiv.style.display = "none";
-                document.body.insertBefore(minimizedElemDiv, document.body.firstChild);
+                document.getElementById("quip-element-root").prepend(minimizedElemDiv);
+                //document.body.insertBefore(minimizedElemDiv, document.body.firstChild);
 
                 if (message.localStorage.like) { 
                     document.getElementById("card_like_button").classList.add("slds-is-selected");
@@ -670,7 +672,7 @@ var qMessenger = (function () {
             }
             try {
                 const xhr = new XMLHttpRequest();
-                xhr.open("POST", this.voteURL);
+                xhr.open("PUT", this.voteURL);
                 xhr.setRequestHeader("Content-Type", "application/json");
                 xhr.setRequestHeader("x-csrf-token", this.csrfToken);
                 xhr.onload = () => {
@@ -701,7 +703,6 @@ var qMessenger = (function () {
                 message.localStorage = obj;
             } else {
                 var obj = record.get('qmessenger')[messageKey];//window.localStorage.getItem(messageKey);
-                console.log(obj)
                 message.localStorage = JSON.parse(obj);
             }
             return message;
