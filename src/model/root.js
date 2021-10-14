@@ -7,10 +7,14 @@ export class RootEntity extends quip.apps.RootRecord {
         this.isHighlighted_ = false;
     }
     static getProperties() {
-        return {};
+        return {
+            qmessenger: 'object'
+        };
     }
     static getDefaultProperties() {
-        return {};
+        return {
+            qmessenger: null
+        };
     }
     getData() {
         return {isHighlighted: this.isHighlighted_};

@@ -1,3 +1,4 @@
+//Hello
 var qMessenger = (function () {
     return {
 
@@ -96,7 +97,8 @@ var qMessenger = (function () {
 
             var elemDiv = document.createElement("div");
             elemDiv.innerHTML = html;
-            document.body.insertBefore(elemDiv, document.body.firstChild);
+            document.getElementById("quip-element-root").prepend(elemDiv);
+            //document.body.insertBefore(elemDiv, document.body.firstChild);
 
             if (message.localStorage.like) { document.getElementById("alert_like_button").classList.add("slds-is-selected"); }
             if (message.localStorage.dislike) { document.getElementById("alert_dislike_button").classList.add("slds-is-selected"); }
@@ -659,17 +661,20 @@ var qMessenger = (function () {
 
         appendLocalStorageToMessages(message) {
             var messageKey = 'qmessenger_' + message.uuid;
-            if (localStorage.getItem(messageKey) === null) {
+            let record = quip.apps.getRootRecord();
+            if (record.get('qmessenger') === null) {
+            //if (localStorage.getItem(messageKey) === null) {
                 var obj = {
                     minimized: false,
                     dismissed: false,
                     like: false,
                     dislike: false
                 }
-                window.localStorage.setItem(messageKey, JSON.stringify(obj));
+                record.set('qmessenger', {messageKey: JSON.stringify(obj)});
+                //window.localStorage.setItem(messageKey, JSON.stringify(obj));
                 message.localStorage = obj;
             } else {
-                var obj = window.localStorage.getItem(messageKey);
+                var obj = record.get('qmessenger').messageKey;//window.localStorage.getItem(messageKey);
                 message.localStorage = JSON.parse(obj);
             }
             return message;
