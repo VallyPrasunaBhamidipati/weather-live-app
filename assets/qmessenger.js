@@ -42,7 +42,8 @@ var qMessenger = (function () {
                         this.messengerLog("setTheIconValues", "Parsing returned XML for icons", false );
                         var elemDiv = document.createElement("svg");
                         elemDiv.innerHTML = xhr.response;
-                        document.body.insertBefore(elemDiv, document.body.firstChild);
+                        document.getElementById("quip-element-root").prepend(elemDiv);
+                        //document.body.insertBefore(elemDiv, document.body.firstChild);
                         this.messengerLog("setTheIconValues", "Icon values set", false);
                     }
                 };
@@ -108,7 +109,9 @@ var qMessenger = (function () {
                 self.messengerLog("displayAlertMessage", "Close alert", false);
                 document.getElementById("alert_message").style.display = "none";
                 self.messages.alert_message.localStorage.dismissed = true;
-                window.localStorage.setItem('qmessenger_' + self.messages.alert_message.uuid, JSON.stringify(self.messages.alert_message.localStorage));
+                const record = quip.apps.getRootRecord();
+                record.set('qmessenger', { ['qmessenger_' + self.messages.alert_message.uuid]: JSON.stringify(self.messages.alert_message.localStorage)});
+                //window.localStorage.setItem('qmessenger_' + self.messages.alert_message.uuid, JSON.stringify(self.messages.alert_message.localStorage));
             }, false );
 
             document.getElementById("alert_like_button").addEventListener("click", function () {
@@ -123,7 +126,9 @@ var qMessenger = (function () {
                     document.getElementById("alert_like_button").classList.remove("slds-is-selected");
                     document.getElementById("alert_dislike_button").classList.remove("slds-is-selected");
                 }
-                window.localStorage.setItem('qmessenger_' + self.messages.alert_message.uuid, JSON.stringify(self.messages.alert_message.localStorage));
+                const record = quip.apps.getRootRecord();
+                record.set('qmessenger', { ['qmessenger_' + self.messages.alert_message.uuid]: JSON.stringify(self.messages.alert_message.localStorage)});
+                //window.localStorage.setItem('qmessenger_' + self.messages.alert_message.uuid, JSON.stringify(self.messages.alert_message.localStorage));
             },false);
 
             document.getElementById("alert_dislike_button").addEventListener("click", function () {
@@ -138,7 +143,9 @@ var qMessenger = (function () {
                     document.getElementById("alert_like_button").classList.remove("slds-is-selected");
                     document.getElementById("alert_dislike_button").classList.remove("slds-is-selected");
                 }
-                window.localStorage.setItem('qmessenger_' + self.messages.alert_message.uuid, JSON.stringify(self.messages.alert_message.localStorage));
+                const record = quip.apps.getRootRecord();
+                record.set('qmessenger', { ['qmessenger_' + self.messages.alert_message.uuid]: JSON.stringify(self.messages.alert_message.localStorage)});
+                //window.localStorage.setItem('qmessenger_' + self.messages.alert_message.uuid, JSON.stringify(self.messages.alert_message.localStorage));
             }, false);
 
         },
@@ -228,7 +235,9 @@ var qMessenger = (function () {
                 self.messengerLog("displayPromptMessage", "Close prompt", false);
                 document.getElementById("prompt_message").style.display = "none";
                 self.messages.prompt_message.localStorage.dismissed = true;
-                window.localStorage.setItem('qmessenger_' + self.messages.prompt_message.uuid, JSON.stringify(self.messages.prompt_message.localStorage));
+                const record = quip.apps.getRootRecord();
+                record.set('qmessenger', { ['qmessenger_' + self.messages.prompt_message.uuid]: JSON.stringify(self.messages.prompt_message.localStorage)});
+                //window.localStorage.setItem('qmessenger_' + self.messages.prompt_message.uuid, JSON.stringify(self.messages.prompt_message.localStorage));
             }, false);
 
             document.getElementById("prompt_button").addEventListener("click", function () {
@@ -236,7 +245,9 @@ var qMessenger = (function () {
                 document.getElementById("prompt_message").style.display = "none";
                 if (!message.persistent && document.querySelector('#doNotShowAgain').checked) {
                     self.messages.prompt_message.localStorage.dismissed = true;
-                    window.localStorage.setItem('qmessenger_' + self.messages.prompt_message.uuid, JSON.stringify(self.messages.prompt_message.localStorage));
+                    const record = quip.apps.getRootRecord();
+                    record.set('qmessenger', { ['qmessenger_' + self.messages.prompt_message.uuid]: JSON.stringify(self.messages.prompt_message.localStorage)});
+                    //window.localStorage.setItem('qmessenger_' + self.messages.prompt_message.uuid, JSON.stringify(self.messages.prompt_message.localStorage));
                 }
             }, false);
 
@@ -252,7 +263,9 @@ var qMessenger = (function () {
                     document.getElementById("prompt_like_button").classList.remove("slds-is-selected");
                     document.getElementById("prompt_dislike_button").classList.remove("slds-is-selected");
                 }
-                window.localStorage.setItem('qmessenger_' + self.messages.prompt_message.uuid, JSON.stringify(self.messages.prompt_message.localStorage));
+                const record = quip.apps.getRootRecord();
+                record.set('qmessenger', { ['qmessenger_' + self.messages.prompt_message.uuid]: JSON.stringify(self.messages.prompt_message.localStorage)});
+                //window.localStorage.setItem('qmessenger_' + self.messages.prompt_message.uuid, JSON.stringify(self.messages.prompt_message.localStorage));
             }, false);
 
             document.getElementById("prompt_dislike_button").addEventListener("click", function () {
@@ -267,7 +280,9 @@ var qMessenger = (function () {
                     document.getElementById("prompt_like_button").classList.remove("slds-is-selected");
                     document.getElementById("prompt_dislike_button").classList.remove("slds-is-selected");
                 }
-                window.localStorage.setItem('qmessenger_' + self.messages.prompt_message.uuid, JSON.stringify(self.messages.prompt_message.localStorage));
+                const record = quip.apps.getRootRecord();
+                record.set('qmessenger', { ['qmessenger_' + self.messages.prompt_message.uuid]: JSON.stringify(self.messages.prompt_message.localStorage)});
+                //window.localStorage.setItem('qmessenger_' + self.messages.prompt_message.uuid, JSON.stringify(self.messages.prompt_message.localStorage));
             }, false);
         },
 
@@ -474,7 +489,9 @@ var qMessenger = (function () {
                     document.getElementById("card_message").style.display = "none";
                     document.getElementById("minimized_card_message").style.display = "block";
                     self.messages.card_message.localStorage.minimized = !self.messages.card_message.localStorage.minimized;
-                    window.localStorage.setItem('qmessenger_' + self.messages.card_message.uuid, JSON.stringify(self.messages.card_message.localStorage));
+                    const record = quip.apps.getRootRecord();
+                    record.set('qmessenger', { ['qmessenger_' + self.messages.card_message.uuid]: JSON.stringify(self.messages.card_message.localStorage)});
+                    //window.localStorage.setItem('qmessenger_' + self.messages.card_message.uuid, JSON.stringify(self.messages.card_message.localStorage));
                 }, false);
 
                 document.getElementById("open_card_button").addEventListener("click", function () {
@@ -482,7 +499,8 @@ var qMessenger = (function () {
                     document.getElementById("card_message").style.display = "block";
                     document.getElementById("minimized_card_message").style.display = "none";
                     self.messages.card_message.localStorage.minimized = !self.messages.card_message.localStorage.minimized;
-                    window.localStorage.setItem('qmessenger_' + self.messages.card_message.uuid, JSON.stringify(self.messages.card_message.localStorage));
+                    record.set('qmessenger', { ['qmessenger_' + self.messages.card_message.uuid]: JSON.stringify(self.messages.card_message.localStorage)});
+                    //window.localStorage.setItem('qmessenger_' + self.messages.card_message.uuid, JSON.stringify(self.messages.card_message.localStorage));
                 }, false);
 
                 document.getElementById("card_like_button").addEventListener("click", function () {
@@ -501,7 +519,9 @@ var qMessenger = (function () {
                         document.getElementById("card_like_button_min").classList.remove("slds-is-selected");
                         document.getElementById("card_dislike_button_min").classList.remove("slds-is-selected");
                     }
-                    window.localStorage.setItem('qmessenger_' + self.messages.card_message.uuid, JSON.stringify(self.messages.card_message.localStorage));
+                    const record = quip.apps.getRootRecord();
+                    record.set('qmessenger', { ['qmessenger_' + self.messages.card_message.uuid]: JSON.stringify(self.messages.card_message.localStorage)});
+                    //window.localStorage.setItem('qmessenger_' + self.messages.card_message.uuid, JSON.stringify(self.messages.card_message.localStorage));
                 }, false);
 
                 document.getElementById("card_dislike_button").addEventListener("click", function () {
@@ -520,7 +540,9 @@ var qMessenger = (function () {
                         document.getElementById("card_like_button_min").classList.remove("slds-is-selected");
                         document.getElementById("card_dislike_button_min").classList.remove("slds-is-selected");
                     }
-                    window.localStorage.setItem('qmessenger_' + self.messages.card_message.uuid, JSON.stringify(self.messages.card_message.localStorage));
+                    const record = quip.apps.getRootRecord();
+                    record.set('qmessenger', { ['qmessenger_' + self.messages.card_message.uuid]: JSON.stringify(self.messages.card_message.localStorage)});
+                    //window.localStorage.setItem('qmessenger_' + self.messages.card_message.uuid, JSON.stringify(self.messages.card_message.localStorage));
                 }, false);
 
                 document.getElementById("card_like_button_min").addEventListener("click", function () {
@@ -539,7 +561,9 @@ var qMessenger = (function () {
                         document.getElementById("card_like_button_min").classList.remove("slds-is-selected");
                         document.getElementById("card_dislike_button_min").classList.remove("slds-is-selected");
                     }
-                    window.localStorage.setItem('qmessenger_' + self.messages.card_message.uuid, JSON.stringify(self.messages.card_message.localStorage));
+                    const record = quip.apps.getRootRecord();
+                    record.set('qmessenger', { ['qmessenger_' + self.messages.card_message.uuid]: JSON.stringify(self.messages.card_message.localStorage)});
+                    //window.localStorage.setItem('qmessenger_' + self.messages.card_message.uuid, JSON.stringify(self.messages.card_message.localStorage));
                 }, false);
 
                 document.getElementById("card_dislike_button_min").addEventListener("click", function () {
@@ -558,7 +582,9 @@ var qMessenger = (function () {
                         document.getElementById("card_like_button_min").classList.remove("slds-is-selected");
                         document.getElementById("card_dislike_button_min").classList.remove("slds-is-selected");
                     }
-                    window.localStorage.setItem('qmessenger_' + self.messages.card_message.uuid, JSON.stringify(self.messages.card_message.localStorage));
+                    const record = quip.apps.getRootRecord();
+                    record.set('qmessenger', { ['qmessenger_' + self.messages.card_message.uuid]: JSON.stringify(self.messages.card_message.localStorage)});
+                    //window.localStorage.setItem('qmessenger_' + self.messages.card_message.uuid, JSON.stringify(self.messages.card_message.localStorage));
                 }, false);
             } catch(ex) {
                 this.messengerLog("displayCardMessage", ex, true);
@@ -661,7 +687,7 @@ var qMessenger = (function () {
 
         appendLocalStorageToMessages(message) {
             var messageKey = 'qmessenger_' + message.uuid;
-            let record = quip.apps.getRootRecord();
+            const record = quip.apps.getRootRecord();
             if (record.get('qmessenger') === null) {
             //if (localStorage.getItem(messageKey) === null) {
                 var obj = {
@@ -670,11 +696,12 @@ var qMessenger = (function () {
                     like: false,
                     dislike: false
                 }
-                record.set('qmessenger', {messageKey: JSON.stringify(obj)});
+                record.set('qmessenger', { [messageKey]: JSON.stringify(obj)});
                 //window.localStorage.setItem(messageKey, JSON.stringify(obj));
                 message.localStorage = obj;
             } else {
-                var obj = record.get('qmessenger').messageKey;//window.localStorage.getItem(messageKey);
+                var obj = record.get('qmessenger')[messageKey];//window.localStorage.getItem(messageKey);
+                console.log(obj)
                 message.localStorage = JSON.parse(obj);
             }
             return message;
