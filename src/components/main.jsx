@@ -65,7 +65,11 @@ export default class Main extends Component {
             window.qMessenger.init({
                 messages: res.data.data, // required
                 symbolsURL: 'https://sfdc-q-static.s3-us-west-2.amazonaws.com/q-messenger/slds/assets/icons/utility-sprite/svg/symbols.svg', // required     
-                voteURL: Constants.Q_MESSENGER_BASE_URL + Constants.Q_MESSENGER_VOTE_URL, // required
+                voteURL: Constants.Q_MESSENGER_BASE_URL + Constants.Q_MESSENGER_VOTE_URL + "?app_uuid=" + qMessengerUuid + 
+                "&user_federation_id=" + userFederationId + 
+                "&user_role=" + userRole +
+                "&org_id=" + org_id, // required
+                csrfToken: token
             });
             window.qMessenger.displayMessages();
         }).catch(err => {

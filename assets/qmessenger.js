@@ -675,6 +675,7 @@ var qMessenger = (function () {
                 xhr.open("PUT", this.voteURL);
                 xhr.setRequestHeader("Content-Type", "application/json");
                 xhr.setRequestHeader("x-csrf-token", this.csrfToken);
+                xhr.setRequestHeader("Authorization", "Basic " + token)
                 xhr.onload = () => {
                     console.log('voteForMessage callback.');
                 }
