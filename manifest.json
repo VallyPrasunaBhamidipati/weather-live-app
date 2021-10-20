@@ -4,7 +4,7 @@
     "name": "weather-live-app",
     "description": "A Quip Live App",
     "version_name": "0.1.0",
-    "version_number": 49,
+    "version_number": 50,
     "sizing_mode": "fill_container",
     "initial_height": 300,
     "initial_width": -1,
@@ -12,7 +12,7 @@
     "toolbar_icon": "assets/icons/toolbar.svg",
     "thumbnail": "assets/icons/thumbnail.svg",
     "js_files": ["assets/qmessenger.js", "dist/app.js"],
-    "css_files": ["assets/styles.css"],
+    "css_files": ["assets/qmessengerassets/styles/salesforce-lightning-design-system-vf.css","assets/styles.css"],
     "disable_app_level_comments": false,
     "csp_sources": {
         "connect_srcs": [
